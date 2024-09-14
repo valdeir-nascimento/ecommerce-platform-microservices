@@ -6,12 +6,16 @@ import lombok.Getter;
 import lombok.ToString;
 import lombok.extern.jackson.Jacksonized;
 
+import java.io.Serializable;
+
 @Jacksonized
 @Builder
 @Getter
 @ToString
 @EqualsAndHashCode
-public class Customer {
+public class Customer implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String id, firstName, lastName, email;
 
