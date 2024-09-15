@@ -22,7 +22,7 @@ public class OrderCreationServiceImpl implements OrderCreationService {
     public Order create(Order order) {
         order.calculateTotalValue();
         order = orderRepository.save(order);
-        orderEventPublisher.publish(order);
+        orderEventPublisher.orderCreate(order);
         log.info(format("[%s] Pedido Criado", order.getId()));
         return order;
     }

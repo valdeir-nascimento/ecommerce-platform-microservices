@@ -53,7 +53,7 @@ class OrderCreationServiceImplTest {
     void givenOrder_whenCreateOrder_thenEventIsPublished() {
         when(orderRepository.save(any(Order.class))).thenAnswer(invocation -> invocation.getArgument(0));
         orderCreationService.create(order);
-        verify(orderEventPublisher, times(1)).publish(order);
+        verify(orderEventPublisher, times(1)).orderCreate(order);
     }
 
 }
