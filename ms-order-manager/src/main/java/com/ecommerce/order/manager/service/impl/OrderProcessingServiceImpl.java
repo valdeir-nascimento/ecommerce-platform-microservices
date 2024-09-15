@@ -43,7 +43,7 @@ public class OrderProcessingServiceImpl implements OrderProcessingService {
     }
 
     @Override
-    public void processShippment(String orderId) {
+    public void processShipment(String orderId) {
         orderRepository.update(orderId, OrderStatus.enviado);
         log.info(format("[%s] Pedido Enviado", orderId));
     }

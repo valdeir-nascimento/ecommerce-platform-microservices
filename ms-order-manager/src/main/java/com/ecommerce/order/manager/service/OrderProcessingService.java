@@ -8,7 +8,7 @@ public interface OrderProcessingService {
 
     void processRejection(String orderId);
 
-    void processShippment(String orderId);
+    void processShipment(String orderId);
 
     void processDelivery(String orderId);
 }
