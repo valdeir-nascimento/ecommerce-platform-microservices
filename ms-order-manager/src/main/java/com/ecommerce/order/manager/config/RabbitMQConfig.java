@@ -12,7 +12,10 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQConfig {
 
     @Value("${spring.cloud.stream.bindings.pedidoCriado-out-0.destination}")
-    private String exchange;
+    private String orderCreatedQueue;
+
+    @Value("${spring.cloud.stream.bindings.pedidoConfirmado-out-0.destination}")
+    private String orderConfirmedQueue;
 
     @Bean
     public RabbitTemplate rabbitTemplate(ConnectionFactory connectionFactory) {
@@ -22,8 +25,13 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public FanoutExchange fanoutExchange() {
-        return new FanoutExchange(exchange);
+    public FanoutExchange orderCreatedExchange() {
+        return new FanoutExchange(orderCreatedQueue);
+    }
+
+    @Bean
+    public FanoutExchange orderConfirmedExchange() {
+        return new FanoutExchange(orderConfirmedQueue);
     }
 
     @Bean
